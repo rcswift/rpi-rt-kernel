@@ -20,8 +20,8 @@ RUN apt-get install -y git make gcc bison flex libssl-dev bc ncurses-dev kmod \
 WORKDIR /rpi-kernel
 RUN git clone https://github.com/raspberrypi/linux.git -b ${LINUX_KERNEL_BRANCH} --depth=1
 WORKDIR /rpi-kernel/linux
-RUN curl https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/${LINUX_KERNEL_VERSION}/older/${PATCH}.patch.gz --output ${PATCH}.patch.gz && \
-    gzip -cd /rpi-kernel/linux/${PATCH}.patch.gz | patch -p1 --verbose
+RUN curl https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/${LINUX_KERNEL_VERSION}/older/${LINUX_KERNEL_RT_PATCH}.patch.gz --output ${LINUX_KERNEL_RT_PATCH}.patch.gz && \
+    gzip -cd /rpi-kernel/linux/${LINUX_KERNEL_RT_PATCH}.patch.gz | patch -p1 --verbose
 
 # if PLATFORM32 has been defined then set KERNEL=kernel else set KERNEL=kernel8 (arm64)
 ENV KERNEL=${PLATFORM32:+kernel}
