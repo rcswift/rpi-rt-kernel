@@ -37,6 +37,9 @@ arm_64bit=1
 enable_uart=1
 force_turbo=1
 
+# Automatically load initramfs files, if found
+auto_initramfs=1
+
 # uncomment if you get no picture on HDMI for a default "safe" mode
 #hdmi_safe=1
 
